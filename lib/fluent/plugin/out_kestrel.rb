@@ -22,7 +22,7 @@ module Fluent
       super
 
       unless @queue && @host
-        raise ConfigError, "'host' and 'queue' parameter must be specified."
+        raise ConfigError, "[kestrel config error]:'host' and 'queue' parameter must be specified."
       end
       @timef = TimeFormatter.new(@time_format, @localtime)
     end
