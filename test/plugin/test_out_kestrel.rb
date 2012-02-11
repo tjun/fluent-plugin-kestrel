@@ -13,8 +13,6 @@ class TestFluentPluginKestrel < Test::Unit::TestCase
     queue test
   ]
 
-  end
-
   def create_driver(conf = CONFIG)
     Fluent::Test::BufferedOutputTestDriver.new(Fluent::KestrelOutput).configure(conf)
   end
@@ -35,23 +33,26 @@ class TestFluentPluginKestrel < Test::Unit::TestCase
   def test_format
     d = create_driver
     time = Time.parse("2011-01-02 13:14:15 UTC").to_i
-    
+
     d.emit({"a"=>1}, time)
     d.emit({"a"=>2}, time)
-    d.expect_format([time, {"a"=>1}].to_msgpack)
-    d.expect_format([time, {"a"=>2}].to_msgpack)
+    d.expect_format(["test", time, {"a"=>1}].to_msgpack)
+    d.expect_format(["test", time, {"a"=>2}].to_msgpack)
     d.run
   end
 
   def test_write
-#    d = create_driver
-#    time = Time.parse("2011-01-02 13:14:15 UTC").to_i
+    d = create_driver
+    time = Time.parse("2011-01-02 13:14:15 UTC").to_i
 
-#    d.emit({"a"=>2}, time)
-#    d.emit({"a"=>3}, time)
-#    d.run
+    d.emit({"a"=>3}, time)
+    d.run
 
-#    assert_equal "2", d.instance.kestrel.hget("test.#{@time}.0", "a")
-#    assert_equal "3", d.instance.redis.hget("test.#{@time}.1", "a")
+    assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":1}", d.instance.kestrel.get("test")
+    assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":2}", d.instance.kestrel.get("test")
+    assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":3}", d.instance.kestrel.get("test")
+    
+    
+
   end
 end
