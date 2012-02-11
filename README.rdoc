@@ -1,9 +1,15 @@
 = fluent-plugin-kestrel
 
-Description goes here.
+fluentd output plugin for kestrel.
+
+fluentd is an event collector system.
+see https://github.com/fluent/fluentd
+
+kestrel is a simple, distributed message queue.
+see https://github.com/robey/kestrel
 
 == Contributing to fluent-plugin-kestrel
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
 * Fork the project.
