@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "fluent-plugin-kestrel.gemspec",
     "lib/fluent/plugin/out_kestrel.rb",
     "test/helper.rb",
     "test/plugin/test_out_kestrel.rb"
