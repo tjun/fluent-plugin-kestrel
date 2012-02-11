@@ -16,9 +16,9 @@ Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "fluent-plugin-kestrel"
   gem.homepage = "http://github.com/tjun/fluent-plugin-kestrel"
-  gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.license = "Apache License, Version 2.0"
+  gem.summary = %Q{fluentd output plugin for kestrel.}
+  gem.description = %Q{fluentd output plugin for kestrel queue.}
   gem.email = "t.junichiro@gmail.com"
   gem.authors = ["Junichiro Takagi"]
   # dependencies defined in Gemfile
@@ -32,7 +32,7 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-require 'rcov/rcovtask'
+require 'simplecov/simplecovtask'
 Rcov::RcovTask.new do |test|
   test.libs << 'test'
   test.pattern = 'test/**/test_*.rb'
