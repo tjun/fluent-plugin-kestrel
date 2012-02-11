@@ -10,12 +10,9 @@ group :development do
   gem "bundler", "~> 1.0.0"
   gem "rdoc", "~> 3.12"
   gem "jeweler", "~> 1.8.3"
-#  gem "rcov", ">= 0"
-end
-
-group :test do
-  gem "simplecov",:require => false
-  gem "simplecov-rcov",:require => false
+  gem "rcov", ">= 0" if RUBY_VERSION < "1.9.0"
+  gem "simplecov", ">= 0.3.5", :require => false if RUBY_VERSION >= "1.9.0"
+  gem "simplecov-rcov", ">= 0" if RUBY_VERSION >= "1.9.0"
 end
 
 gem "fluentd", ">= 0.10.10"
