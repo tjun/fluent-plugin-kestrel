@@ -8,6 +8,18 @@ see https://github.com/fluent/fluentd
 kestrel is a simple, distributed message queue.
 see https://github.com/robey/kestrel
 
+== Fluentd Configuration
+
+  <match kestrel.**>
+    type kestrel
+
+    host localhost     # kestrel host (required)
+    queue test         # queue name of kestrel (required)
+
+    port 22133         # optional, default 22133
+  </match>
+
+
 == Contributing to fluent-plugin-kestrel
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
