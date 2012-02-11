@@ -6,7 +6,7 @@ module Fluent
     config_param :port,         :integer,   :default => 22133
     config_param :queue,        :string,    :default => nil
     config_param :ttl,          :integer,   :default => 0
-    config_param :raw,          :boolean,   :default => false
+    config_param :raw,          :bool,      :default => false
 
 
     def initialize
@@ -25,7 +25,7 @@ module Fluent
     def start
       super
 
-      @kestrel = Kestrel::Client.new(@host + ":" @port)
+      @kestrel = Kestrel::Client.new(@host + ":" + @port)
     end
 
     def shutdown
@@ -39,7 +39,6 @@ module Fluent
     def write(chunk)
       chunk.open{ |data|
           @kestrel.set(@queue, data, ttl=@ttl, raw=@raw)
-        }
       }
     end
   end
