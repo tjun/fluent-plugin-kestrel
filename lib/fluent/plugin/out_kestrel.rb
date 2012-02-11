@@ -47,7 +47,7 @@ module Fluent
           MessagePack::Unpacker.new(io).each{ |tag, time, record|
             time_str = @timef.format(time)          
             data = "#{time_str}\t#{tag}\t#{record.to_json}"
-
+            
             @kestrel.set(@queue, data, ttl=@ttl, raw=@raw)
           }
         rescue EOFError
