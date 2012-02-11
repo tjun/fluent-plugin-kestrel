@@ -2,7 +2,7 @@ module Fluent
   class KestrelOutput < BufferedOutput
     Fluent::Plugin.register_output('kestrel', self)
 
-    config_param :host,         :string,    :default => '127.0.0.1'
+    config_param :host,         :string,    :default => nil
     config_param :port,         :integer,   :default => 22133
     config_param :queue,        :string,    :default => nil
     config_param :ttl,          :integer,   :default => 0
@@ -17,8 +17,8 @@ module Fluent
     def configure(conf)
       super
 
-      unless @queue
-        raise ConfigError, "'queue' parameter must be specified."
+      unless @queue && @host
+        raise ConfigError, "'host' and 'queue' parameter must be specified."
       end
     end
 

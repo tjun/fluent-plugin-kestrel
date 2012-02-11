@@ -15,5 +15,6 @@ group :development do
   gem "simplecov-rcov", ">= 0" if RUBY_VERSION >= "1.9.0"
 end
 
+gem "kestrel-client", ">= 0.7.1"
 gem "fluentd", ">= 0.10.10"
 
