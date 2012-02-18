@@ -23,6 +23,26 @@ see https://github.com/robey/kestrel
     port 22133         # optional, default 22133
   </match>
 
+== Data Format
+
+[time]\t[tag]\t[resource(JSON)]
+
+you can see its data format like so:
+    $ telnet localhost 22133
+
+    get test
+
+    VALUE test 0 125
+    I"x2012-02-11T16:38:54Z apache.access   {"host":"::1","user":"-","method":"GET","path":"/test/","code":"304","size":"-"}:EF
+    END
+
+
+The prefix and suffix depends on kestrel-client.gem
+
+== ToDo
+
+Data format customizable.
+
 
 == Contributing to fluent-plugin-kestrel
 
