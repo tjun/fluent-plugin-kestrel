@@ -25,7 +25,7 @@ see https://github.com/robey/kestrel
 
 == Data Format
 
-[time]\t[tag]\t[resource(JSON)]
+    [time]\t[tag]\t[resource(JSON)]
 
 you can see its data format like so:
     $ telnet localhost 22133
