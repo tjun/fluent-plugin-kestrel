@@ -10,7 +10,7 @@ class TestFluentPluginKestrel < Test::Unit::TestCase
     type kestrel
     host localhost
     port 22133
-    queue test
+    queue fluent-test
   ]
 
   def create_driver(conf = CONFIG)
@@ -22,12 +22,13 @@ class TestFluentPluginKestrel < Test::Unit::TestCase
       type kestrel
       host localhost
       port 22133
-      queue test
+      queue fluent-test
     ])
 
     assert_equal 'localhost', d.instance.host
     assert_equal 22133, d.instance.port
-    assert_equal "test", d.instance.queue
+    assert_equal "fluent-test", d.instance.queue
+
   end
 
   def test_format
@@ -50,9 +51,9 @@ class TestFluentPluginKestrel < Test::Unit::TestCase
 
     get_opt = { :raw => true }.freeze
 
-    assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":1}", d.instance.kestrel.get("test", opts=get_opt)
-    assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":2}", d.instance.kestrel.get("test", opts=get_opt)
-    assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":3}", d.instance.kestrel.get("test", opts=get_opt)
+    assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":1}", d.instance.kestrel.get("fluent-test", opts=get_opt)
+    assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":2}", d.instance.kestrel.get("fluent-test", opts=get_opt)
+    assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":3}", d.instance.kestrel.get("fluent-test", opts=get_opt)
 
   end
 end
