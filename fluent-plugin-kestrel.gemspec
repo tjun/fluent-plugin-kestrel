@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "fluent-plugin-kestrel"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Junichiro Takagi"]
-  s.date = "2012-02-11"
+  s.date = "2012-05-20"
   s.description = "fluentd output plugin for kestrel queue."
   s.email = "t.junichiro@gmail.com"
   s.extra_rdoc_files = [
@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/tjun/fluent-plugin-kestrel"
   s.licenses = ["Apache License, Version 2.0"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.15"
+  s.rubygems_version = "1.8.24"
   s.summary = "fluentd output plugin for kestrel."
 
   if s.respond_to? :specification_version then
@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<kestrel-client>, [">= 0.7.1"])
       s.add_runtime_dependency(%q<fluentd>, [">= 0.10.10"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
+      s.add_development_dependency(%q<bundler>, [">= 1.0.0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.8.3"])
       s.add_development_dependency(%q<simplecov>, [">= 0.3.5"])
@@ -50,7 +50,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<kestrel-client>, [">= 0.7.1"])
       s.add_dependency(%q<fluentd>, [">= 0.10.10"])
       s.add_dependency(%q<shoulda>, [">= 0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
+      s.add_dependency(%q<bundler>, [">= 1.0.0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
       s.add_dependency(%q<simplecov>, [">= 0.3.5"])
@@ -60,7 +60,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<kestrel-client>, [">= 0.7.1"])
     s.add_dependency(%q<fluentd>, [">= 0.10.10"])
     s.add_dependency(%q<shoulda>, [">= 0"])
-    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
+    s.add_dependency(%q<bundler>, [">= 1.0.0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
     s.add_dependency(%q<jeweler>, ["~> 1.8.3"])
     s.add_dependency(%q<simplecov>, [">= 0.3.5"])
