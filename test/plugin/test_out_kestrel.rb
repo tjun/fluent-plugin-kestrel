@@ -48,11 +48,11 @@ class TestFluentPluginKestrel < Test::Unit::TestCase
     d.emit({"a"=>3}, time)
     d.run
 
-    assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":1}", d.instance.kestrel.get("test")
-    assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":2}", d.instance.kestrel.get("test")
-    assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":3}", d.instance.kestrel.get("test")
-    
-    
+    get_opt = { :raw => true }.freeze
+
+    assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":1}", d.instance.kestrel.get("test", opts=get_opt)
+    assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":2}", d.instance.kestrel.get("test", opts=get_opt)
+    assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":3}", d.instance.kestrel.get("test", opts=get_opt)
 
   end
 end

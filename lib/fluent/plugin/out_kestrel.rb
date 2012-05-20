@@ -7,7 +7,7 @@ module Fluent
     config_param :port,         :integer,   :default => 22133
     config_param :queue,        :string,    :default => nil
     config_param :ttl,          :integer,   :default => 0
-    config_param :raw,          :bool,      :default => false
+    config_param :raw,          :bool,      :default => true
     config_param :time_format,  :string,    :default => nil
 
 
@@ -45,13 +45,13 @@ module Fluent
       chunk.open { |io|
         begin
           MessagePack::Unpacker.new(io).each{ |tag, time, record|
-            time_str = @timef.format(time)          
+            time_str = @timef.format(time)
             data = "#{time_str}\t#{tag}\t#{record.to_json}"
-            
+
             @kestrel.set(@queue, data, ttl=@ttl, raw=@raw)
           }
         rescue EOFError
-          # EOFError always occured when reached end of chunk.          
+          # EOFError always occured when reached end of chunk.
         end
       }
     end
