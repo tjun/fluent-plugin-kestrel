@@ -10,8 +10,6 @@ module Fluent
     config_param :raw,          :bool,      :default => true
     config_param :time_format,  :string,    :default => nil
 
-
-
     def initialize
       super
       require 'kestrel'
@@ -22,7 +20,7 @@ module Fluent
       super
 
       unless @queue && @host
-        raise ConfigError, "[kestrel config error]:'host' and 'queue' parameter must be specified."
+        raise ConfigError, "[kestrel config error]:'host' and 'queue' option is required."
       end
       @timef = TimeFormatter.new(@time_format, @localtime)
     end
