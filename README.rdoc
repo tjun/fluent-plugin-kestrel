@@ -16,11 +16,11 @@ see https://github.com/robey/kestrel
 
   <match kestrel.**>
     type kestrel
+    host localhost     # (required) kestrel host
+    queue test         # (required) queue name of kestrel
 
-    host localhost     # kestrel host (required)
-    queue test         # queue name of kestrel (required)
-
-    port 22133         # optional, default 22133
+    port 22133         # (optional) kestrel port. default 22133
+    ttl  100           # (optional) ttl(sec). default=0 (never expire)
   </match>
 
 == Data Format
