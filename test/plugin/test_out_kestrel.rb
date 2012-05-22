@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestFluentPluginKestrel < Test::Unit::TestCase
+class TestFluentPluginOutKestrel < Test::Unit::TestCase
   def setup
     Fluent::Test.setup
     require 'fluent/plugin/out_kestrel'
@@ -28,6 +28,7 @@ class TestFluentPluginKestrel < Test::Unit::TestCase
     assert_equal 'localhost', d.instance.host
     assert_equal 22133, d.instance.port
     assert_equal "fluent-test", d.instance.queue
+    d.run
     d.instance.kestrel.flush("fluent-test")
   end
 
@@ -54,5 +55,6 @@ class TestFluentPluginKestrel < Test::Unit::TestCase
     assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":1}", d.instance.kestrel.get("fluent-test", opts=get_opt)
     assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":2}", d.instance.kestrel.get("fluent-test", opts=get_opt)
     assert_equal "2011-01-02T13:14:15Z\ttest\t{\"a\":3}", d.instance.kestrel.get("fluent-test", opts=get_opt)
+    d.instance.kestrel.flush("fluent-test")
   end
 end

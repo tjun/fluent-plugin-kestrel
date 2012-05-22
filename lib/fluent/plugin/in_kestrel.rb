@@ -1,12 +1,12 @@
 module Fluent
-  class KestrelOutput < Input
-    Fluent::Plugin.register_output('kestrel', self)
+  class KestrelInput < Input
+    Fluent::Plugin.register_input('kestrel', self)
     attr_reader :kestrel
 
     config_param :host,         :string,    :default => nil
     config_param :port,         :integer,   :default => 22133
     config_param :queue,        :string,    :default => nil
-    config_param :tag,          :string     :default => nil
+    config_param :tag,          :string,    :default => nil
 
     config_param :raw,          :bool,      :default => true
     config_param :peek,         :bool,      :default => false
@@ -48,14 +48,17 @@ module Fluent
     end
 
     def run
-      loop {
+      loop do
         data = @kestrel.get(@queue, @options)
         unless data
           sleep 1
         else
           Engine.emit(@tag, Engine.now, data)
         end
-      }
+      end
+    rescue
+      $log.error "unexpected error.", :error=>$!.to_s
+      $log.error_backtrace
     end
   end
 end
