@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "fluent-plugin-kestrel"
   gem.homepage = "http://github.com/tjun/fluent-plugin-kestrel"
   gem.license = "Apache License, Version 2.0"
-  gem.summary = %Q{fluentd output plugin for kestrel.}
-  gem.description = %Q{fluentd output plugin for kestrel queue.}
+  gem.summary = %Q{fluentd input/output plugin for kestrel.}
+  gem.description = %Q{fluentd input/output plugin for kestrel queue.}
   gem.email = "t.junichiro@gmail.com"
   gem.authors = ["Junichiro Takagi"]
   # dependencies defined in Gemfile

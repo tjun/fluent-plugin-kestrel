@@ -1,6 +1,6 @@
 = fluent-plugin-kestrel
 
-fluentd output plugin for kestrel.
+fluentd input/output plugin for kestrel.
 
 fluentd is an event collector system.
 see https://github.com/fluent/fluentd
@@ -14,16 +14,31 @@ see https://github.com/robey/kestrel
 
 == Fluentd Configuration
 
+=== Output
+
   <match kestrel.**>
     type kestrel
     host localhost     # (required) kestrel host
-    queue test         # (required) queue name of kestrel
+    queue fluent       # (required) queue name of kestrel
 
     port 22133         # (optional) kestrel port. default 22133
     ttl  100           # (optional) ttl(sec). default=0 (never expire)
   </match>
 
-== Data Format
+=== Input
+
+  <source>
+    type kestrel
+    host localhost     # (required) kestrel host
+    queue fluent       # (required) kestrel queue name
+    tag kestrel.log    # (required) fluentd tag
+
+    port 22133         # (optional) kestrel port. default 22133
+    timeout 10         # (optional) default 10.
+  </source>
+
+
+== Output Data Format
 
     [time]\t[tag]\t[resource(JSON)]
 
