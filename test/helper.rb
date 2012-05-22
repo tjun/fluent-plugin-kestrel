@@ -1,22 +1,10 @@
-require 'rubygems'
-require 'bundler'
-begin
-  Bundler.setup(:default, :development)
-rescue Bundler::BundlerError => e
-  $stderr.puts e.message
-  $stderr.puts "Run `bundle install` to install missing gems"
-  exit e.status_code
-end
-require 'test/unit'
-require 'shoulda'
-
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
+require 'rubygems'
+require 'bundler'
+require 'test/unit'
+require 'shoulda'
 require 'fluent/test'
-require 'fluent/plugin/out_kestrel'
-
-class Test::Unit::TestCase
-end
 
 if ENV['SIMPLE_COV']
     require 'simplecov'
@@ -24,4 +12,15 @@ if ENV['SIMPLE_COV']
       add_filter 'test/'
       add_filter 'pkg/'
     end
+end
+
+begin
+  Bundler.setup(:default, :development)
+rescue Bundler::BundlerError => e
+  $stderr.puts e.message
+  $stderr.puts "Run `bundle install` to install missing gems"
+  exit e.status_code
+end
+
+class Test::Unit::TestCase
 end
