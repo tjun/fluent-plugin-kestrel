@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Junichiro Takagi"]
   s.date = "2012-05-22"
-  s.description = "fluentd output plugin for kestrel queue."
+  s.description = "fluentd input/output plugin for kestrel queue."
   s.email = "t.junichiro@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.licenses = ["Apache License, Version 2.0"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
-  s.summary = "fluentd output plugin for kestrel."
+  s.summary = "fluentd input/output plugin for kestrel."
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
