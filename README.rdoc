@@ -22,17 +22,16 @@ see https://github.com/robey/kestrel
     queue fluent       # (required) queue name of kestrel
 
     port 22133         # (optional) kestrel port. default 22133
-
     ttl  100           # (optional) ttl(sec). default=0 (never expire)
 
     # output format options
-    output_include_time false   # (optional) default true
-    output_include_tag  false   # (optional) default true
-    remove_prefix       kestrel # (optional) remove tag prefix.
-                                # ex) "kestrel.access" -> "access"
-    field_separator COMMA    # (optional) default '\t'.
-                             # you can use SPACE and COMMA
-    time_format  %Y-%m-%d %H-%M-%S  # (optional)
+    output_include_time false           # (optional) default true
+    output_include_tag  false           # (optional) default true
+    remove_prefix       kestrel         # (optional) remove tag prefix.
+                                        # ex) "kestrel.access" -> "access"
+    field_separator COMMA               # (optional) default '\t'.
+                                        # you can use SPACE and COMMA
+    time_format  %Y-%m-%d %H-%M-%S      # (optional)
 
   </match>
 
@@ -54,24 +53,37 @@ see https://github.com/robey/kestrel
 === default
 
     [time]\t[tag]\t[resource(JSON)]
+    2012-02-11T16:38:54Z apache.access   {"host":"::1","user":"-","method":"GET","path":"/test/}
 
 === format options
 
-==== field_separator COMMA
+field_separator COMMA
 
     [time],[tag],[resource(JSON)]
+    2012-02-11T16:38:54Z,apache.access,{"host":"::1","user":"-","method":"GET","path":"/test/}
 
-==== field_separator SPACE
+field_separator SPACE
 
     [time] [tag] [resource(JSON)]
+    2012-02-11T16:38:54Z apache.access {"host":"::1","user":"-","method":"GET","path":"/test/}
 
-==== output_include_tag false
+output_include_tag false
 
     [time]\t[resource(JSON)]
+    2012-02-11T16:38:54Z {"host":"::1","user":"-","method":"GET","path":"/test/}
 
-==== output_include_time false
+output_include_time false
 
     [tag]\t[resource(JSON)]
+    apache.access   {"host":"::1","user":"-","method":"GET","path":"/test/}
+
+remove_prefix apache
+
+    2012-02-11T16:38:54Z access   {"host":"::1","user":"-","method":"GET","path":"/test/}
+
+time_format %Y/%m/%d %H-%M-%S
+
+    2012/02/11 16:38:54 apache.access   {"host":"::1","user":"-","method":"GET","path":"/test/}
 
 === check output data
 
@@ -98,6 +110,5 @@ you can see its data format like so:
 
 == Copyright
 
-Copyright (c) 2012 Junichiro Takagi. See LICENSE.txt for
-further details.
-
+Copyright:: Copyright (c) 2012 Junichiro Takagi
+License::  Apache License, Version 2.0
