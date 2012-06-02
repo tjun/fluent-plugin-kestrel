@@ -22,7 +22,18 @@ see https://github.com/robey/kestrel
     queue fluent       # (required) queue name of kestrel
 
     port 22133         # (optional) kestrel port. default 22133
+
     ttl  100           # (optional) ttl(sec). default=0 (never expire)
+
+    # output format options
+    output_include_time false   # (optional) default true
+    output_include_tag  false   # (optional) default true
+    remove_prefix       kestrel # (optional) remove tag prefix.
+                                # ex) "kestrel.access" -> "access"
+    field_separator COMMA    # (optional) default '\t'.
+                             # you can use SPACE and COMMA
+    time_format  %Y-%m-%d %H-%M-%S  # (optional)
+
   </match>
 
 === Input
@@ -40,7 +51,29 @@ see https://github.com/robey/kestrel
 
 == Output Data Format
 
+=== default
+
     [time]\t[tag]\t[resource(JSON)]
+
+=== format options
+
+==== field_separator COMMA
+
+    [time],[tag],[resource(JSON)]
+
+==== field_separator SPACE
+
+    [time] [tag] [resource(JSON)]
+
+==== output_include_tag false
+
+    [time]\t[resource(JSON)]
+
+==== output_include_time false
+
+    [tag]\t[resource(JSON)]
+
+=== check output data
 
 you can see its data format like so:
     $ telnet localhost 22133
@@ -51,10 +84,6 @@ you can see its data format like so:
     2012-02-11T16:38:54Z apache.access   {"host":"::1","user":"-","method":"GET","path":"/test/","code":"304","size":"-"}
     END
 
-
-== ToDo
-
-Data format customizable.
 
 
 == Contributing to fluent-plugin-kestrel
