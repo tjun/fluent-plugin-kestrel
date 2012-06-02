@@ -79,11 +79,13 @@ output_include_time false
 
 remove_prefix apache
 
+    [time]\t[tag(prefix removed)]\t[resource(JSON)]
     2012-02-11T16:38:54Z access   {"host":"::1","user":"-","method":"GET","path":"/test/}
 
 time_format %Y/%m/%d %H-%M-%S
 
-    2012/02/11 16:38:54 apache.access   {"host":"::1","user":"-","method":"GET","path":"/test/}
+    [time(original format)]\t[tag]\t[resource(JSON)]
+    2012/02/11 16-38-54 apache.access   {"host":"::1","user":"-","method":"GET","path":"/test/}
 
 === check output data
 
@@ -112,3 +114,4 @@ you can see its data format like so:
 
 Copyright:: Copyright (c) 2012 Junichiro Takagi
 License::  Apache License, Version 2.0
+
