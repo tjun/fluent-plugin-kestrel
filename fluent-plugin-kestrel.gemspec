@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "fluent-plugin-kestrel"
-  s.version = "0.2.1"
+  s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Junichiro Takagi"]
-  s.date = "2012-05-22"
+  s.date = "2012-06-02"
   s.description = "fluentd input/output plugin for kestrel queue."
   s.email = "t.junichiro@gmail.com"
   s.extra_rdoc_files = [
