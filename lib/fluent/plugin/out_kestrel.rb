@@ -70,17 +70,17 @@ module Fluent
     end
 
     def write(chunk)
-      chunk.open { |io|
+      chunk.open do |io|
         begin
-          MessagePack::Unpacker.new(io).each{ |tag, time, record|
+          MessagePack::Unpacker.new(io).each do |tag, time, record|
             data = "#{time}#{tag}#{record.to_json}"
 
             @kestrel.set(@queue, data, ttl=@ttl, raw=@raw)
-          }
+          end
         rescue EOFError
           # EOFError always occured when reached end of chunk.
         end
-      }
+      end
     end
   end
 end
