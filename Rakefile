@@ -28,16 +28,14 @@ Jeweler::RubygemsDotOrgTasks.new
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
+  test.test_files = FileList['test/plugin/*.rb']
   test.verbose = true
 end
 
-#unless RUBY_VERSION =~ /^1\.8/
-#  require 'simplecov'
-#  SimpleCov.start do
-#    add_filter '_test'
-#  end
-#end
+task :coverage do |t|
+  ENV['SIMPLE_COV'] = '1'
+  Rake::Task["test"].invoke
+end
 
 task :default => :test
 
