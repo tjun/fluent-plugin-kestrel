@@ -18,12 +18,7 @@ class TestFluentPluginOutKestrel < Test::Unit::TestCase
   end
 
   def test_configure
-    d = create_driver(%[
-      type kestrel
-      host localhost
-      port 22133
-      queue fluent-test
-    ])
+    d = create_driver
 
     assert_equal 'localhost', d.instance.host
     assert_equal 22133, d.instance.port
