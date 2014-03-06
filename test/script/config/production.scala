@@ -13,7 +13,7 @@ new KestrelConfig {
   textListenPort = 2222
   thriftListenPort = 2229
 
-  queuePath = "%s/spool/".format(currentDir)
+  queuePath = "%s/test/script/spool/".format(currentDir)
 
   clientTimeout = None
 
@@ -49,7 +49,7 @@ new KestrelConfig {
   loggers = new LoggerConfig {
     level = Level.INFO
     handlers = new FileHandlerConfig {
-      filename = "%s/data/kestrel.log".format(currentDir)
+      filename = "%s/test/script/data/kestrel.log".format(currentDir)
       roll = Policy.SigHup
     }
   }
