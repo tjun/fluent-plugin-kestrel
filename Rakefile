@@ -32,20 +32,12 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-if RUBY_VERSION =~ /^1\.8/
-  require 'rcov/rcovtask'
-  Rcov::RcovTask.new do |test|
-    test.libs << 'test'
-    test.pattern = 'test/**/test_*.rb'
-    test.verbose = true
-    test.rcov_opts << '--exclude "gems/*"'
-  end
-else
-  require 'simplecov'
-  SimpleCov.start do
-    add_filter '_test'
-  end
-end
+#unless RUBY_VERSION =~ /^1\.8/
+#  require 'simplecov'
+#  SimpleCov.start do
+#    add_filter '_test'
+#  end
+#end
 
 task :default => :test
 
