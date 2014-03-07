@@ -4,7 +4,9 @@ rvm:
   - 2.1.0
   - 2.0.0
   - 1.9.3
-before_script: ./test/script/kestrel.sh start
+before_script:
+ -  ./test/script/kestrel.sh start
+ - sleep 5
 after_script: ./test/script/kestrel.sh stop
 notifications:
   email: false

@@ -23,7 +23,9 @@ class TestFluentPluginOutKestrel < Test::Unit::TestCase
     assert_equal 'localhost', d.instance.host
     assert_equal 22133, d.instance.port
     assert_equal "fluent-test", d.instance.queue
-    d.run
+    d.run do
+      sleep 2
+    end
     d.instance.kestrel.flush("fluent-test")
   end
 
